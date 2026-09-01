@@ -1,0 +1,430 @@
+:root {
+    --azul: #0E92C0;
+    --navy: #123F77;
+    --cielo: #9DCEF2;
+    --acero: #90A0A7;
+    --marfil: #FDFBF8;
+    --gris: #71757C;
+    --cian: #2485A3;
+
+    --verde: #73937E;
+
+    --lila: #8380B6;
+    --perla: #C2CAE8;
+
+    --footer: #E9EDF7;
+}
+
+
+/*  ESTILOS GENERALES  */
+
+body {
+    margin: 0;
+    background-color: var(--marfil);
+    color: var(--gris);
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    padding: 30px 20px;
+    flex: 1;
+}
+
+
+/* PIE DE PÁGINA  */
+footer {
+    margin-top: 30px;
+    padding: 6px;
+    text-align: center;
+    background-color: var(--footer);
+    color: var(--gris);
+    border-top: 1px solid var(--cielo);
+    font-size: 14px;
+}
+
+
+/*  TÍTULOS Y TEXTOS */
+
+h1 {
+    color: var(--azul);
+    font-size: 32px;
+}
+
+h2 {
+    color: var(--cian);
+    font-size: 24px;
+}
+
+h3 {
+    color: var(--lila);
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* ENCABEZADO  */
+
+header {
+    background-color: var(--marfil);
+    border-bottom: 2px solid var(--cielo);
+}
+
+header .container-fluid {
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+
+/*  LOGO  */
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+
+/*  MENÚ DE NAVEGACIÓN  */
+
+nav {
+    margin-left: 30px;
+}
+
+nav a {
+    color: var(--navy);
+    text-decoration: none;
+    margin-right: 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--azul);
+}
+
+
+/*  TÍTULO PRINCIPAL  */
+
+.encabezado-texto {
+    width: 100%;
+    text-align: center;
+    background-color: var(--navy);
+    padding: 35px 20px;
+    margin: 0 0 30px;
+}
+
+.encabezado-texto h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin: 0 0 10px;
+}
+
+.encabezado-texto p {
+    color: var(--cielo);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+
+/* SECCIÓN DE BIENVENIDA  */
+
+.bienvenida {
+    max-width: 1000px;
+    margin: 30px auto 40px;
+    text-align: center;
+}
+
+.bienvenida-texto {
+    margin-bottom: 20px;
+}
+
+.bienvenida h2 {
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.bienvenida p {
+    color: var(--gris);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.bienvenida img {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+/* ACTIVIDADES DEPORTIVAS  */
+
+#actividades {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#actividades article p {
+    color: var(--gris);
+}
+
+#actividades h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    grid-column: 1 / -1;
+    color: var(--navy);
+}
+
+.actividad {
+    background-color: white;
+    border: 2px solid var(--cielo);
+    padding: 20px;
+    margin: 0;
+    border-radius: 8px;
+}
+
+.actividad h3 {
+    color: var(--navy);
+    border-bottom: 2px solid var(--cielo);
+    padding-bottom: 8px;
+}
+
+#actividades article h3 {
+    color: var(--azul);
+}
+
+.actividad p strong {
+    color: var(--verde);
+}
+
+.actividad a {
+    display: inline-block;
+    background-color: var(--azul);
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.actividad a:hover {
+    background-color: var(--verde);
+}
+
+/* TAMAÑO RESPONSIVO DE LA PAGINA */
+
+@media (max-width: 768px) {
+
+
+    .bienvenida img {
+        width: 100%;
+    }
+
+    .formulario {
+    width: 90%;
+    padding: 15px;
+    box-sizing: border-box;
+    }
+
+    header .container-fluid {
+    flex-direction: column;
+    align-items: center;
+    }
+
+    nav {
+        margin-left: 0;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    #actividades {
+        grid-template-columns: 1fr;
+    }
+
+    .inscripciones {
+    width: 100%;
+    overflow-x: auto;
+    }
+
+    .tabla-inscripciones {
+    width: 100%;
+    min-width: 600px;
+    }
+
+    .encabezado-texto {
+    padding: 25px 15px;
+    }
+
+    .encabezado-texto h1 {
+    font-size: 2rem;
+    }
+
+    .encabezado-texto p {
+    font-size: 1rem;
+    }
+
+}
+
+/*TITULO PAGINA 2 */
+
+main h1 {
+    text-align: center;
+    color: var(--navy);
+    margin-bottom: 25px;
+}
+
+/* TEXTOS DEL FORMULARIO */
+
+.formulario legend {
+    color: var(--navy);
+}
+
+.formulario label {
+    color: var(--gris);
+}
+
+.formulario p {
+    color: var(--gris);
+}
+
+/*  FORMULARIO */
+
+.formulario {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: white;
+    border: 2px solid var(--cielo);
+    border-radius: 8px;
+}
+
+.formulario fieldset {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--acero);
+    border-radius: 6px;
+}
+
+.formulario legend {
+    color: var(--navy);
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+.formulario fieldset div {
+    margin-bottom: 15px;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+
+.formulario input[type="text"],
+.formulario input[type="number"],
+.formulario input[type="date"],
+.formulario input[type="email"],
+.formulario input[type="tel"],
+.formulario select,
+.formulario textarea {
+    padding: 8px;
+    border: 1px solid var(--acero);
+    border-radius: 4px;
+}
+
+.botones-formulario {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.botones-formulario button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botones-formulario button[type="submit"] {
+    background-color: var(--azul);
+    color: white;
+}
+
+.botones-formulario button[type="reset"] {
+    background-color: var(--lila);
+    color: white;
+}
+
+.botones-formulario button[type="submit"]:hover {
+    background-color: var(--verde);
+}
+
+.botones-formulario button[type="reset"]:hover {
+    background-color: var(--cian);
+}
+
+/* TABLA DE INSCRIPCIONES  */
+
+.inscripciones {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.tabla-inscripciones {
+    width: 90%;
+    margin: 25px auto 0;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.tabla-inscripciones th,
+.tabla-inscripciones td {
+    border: 1px solid var(--acero);
+    padding: 12px;
+    text-align: center;
+}
+
+.tabla-inscripciones th {
+    background-color: var(--azul);
+    color: white;
+    font-weight: bold;
+}
+
+.estado-activa {
+    color: var(--verde);
+    font-weight: bold;
+}
+
+.tabla-inscripciones a {
+    display: inline-block;
+    background-color: var(--lila);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.tabla-inscripciones a:hover {
+    background-color: var(--verde);
+}
+
