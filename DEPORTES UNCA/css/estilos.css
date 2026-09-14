@@ -16,7 +16,7 @@
 }
 
 
-/*  ESTILOS GENERALES  */
+/* ESTILOS GENERALES*/
 
 body {
     margin: 0;
@@ -35,7 +35,8 @@ main {
 }
 
 
-/* PIE DE PÁGINA  */
+/* PIE DE PÁGINA*/
+
 footer {
     margin-top: 30px;
     padding: 6px;
@@ -47,7 +48,7 @@ footer {
 }
 
 
-/*  TÍTULOS Y TEXTOS */
+/* TÍTULOS Y TEXTOS*/
 
 h1 {
     color: var(--azul);
@@ -70,7 +71,7 @@ p {
 }
 
 
-/* ENCABEZADO  */
+/* ENCABEZADO */
 
 header {
     background-color: var(--marfil);
@@ -84,7 +85,7 @@ header .container-fluid {
 }
 
 
-/*  LOGO  */
+/* LOGO */
 
 .logo {
     width: 150px;
@@ -92,7 +93,7 @@ header .container-fluid {
 }
 
 
-/*  MENÚ DE NAVEGACIÓN  */
+/* MENÚ DE NAVEGACIÓN */
 
 nav {
     margin-left: 30px;
@@ -110,7 +111,7 @@ nav a:hover {
 }
 
 
-/*  TÍTULO PRINCIPAL  */
+/* TÍTULO PRINCIPAL */
 
 .encabezado-texto {
     width: 100%;
@@ -133,7 +134,7 @@ nav a:hover {
 }
 
 
-/* SECCIÓN DE BIENVENIDA  */
+/* SECCIÓN DE BIENVENIDA */
 
 .bienvenida {
     max-width: 1000px;
@@ -166,80 +167,77 @@ nav a:hover {
     border-radius: 8px;
 }
 
-/* ACTIVIDADES DEPORTIVAS  */
+
+/* ACTIVIDADES DEPORTIVAS*/
 
 #actividades {
     padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-#actividades article p {
-    color: var(--gris);
 }
 
 #actividades h2 {
     text-align: center;
     margin-bottom: 25px;
-    grid-column: 1 / -1;
     color: var(--navy);
 }
 
-.actividad {
+
+/* TABLA DE ACTIVIDADES */
+
+#tablaActividades {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+#tablaActividades thead th {
+    background-color: var(--navy);
+    color: var(--marfil);
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#tablaActividades tbody td {
     background-color: white;
-    border: 2px solid var(--cielo);
-    padding: 20px;
-    margin: 0;
-    border-radius: 8px;
+    padding: 16px 18px;
+    vertical-align: middle;
+    border-top: 1px solid var(--acero);
+    border-bottom: 1px solid var(--acero);
 }
 
-.actividad h3 {
+#tablaActividades tbody td:first-child {
+    border-left: 1px solid var(--acero);
+    font-weight: bold;
     color: var(--navy);
-    border-bottom: 2px solid var(--cielo);
-    padding-bottom: 8px;
 }
 
-#actividades article h3 {
-    color: var(--azul);
+#tablaActividades tbody td:last-child {
+    border-right: 1px solid var(--acero);
 }
 
-.actividad p strong {
-    color: var(--verde);
+#tablaActividades tbody tr:hover td {
+    background-color: var(--footer);
 }
 
-.actividad a {
-    display: inline-block;
-    background-color: var(--azul);
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin-top: 10px;
-}
 
-.actividad a:hover {
-    background-color: var(--verde);
-}
-
-/* TAMAÑO RESPONSIVO DE LA PAGINA */
+/* TAMAÑO RESPONSIVO DE LA PÁGINA */
 
 @media (max-width: 768px) {
-
 
     .bienvenida img {
         width: 100%;
     }
 
     .formulario {
-    width: 90%;
-    padding: 15px;
-    box-sizing: border-box;
+        width: 90%;
+        padding: 15px;
+        box-sizing: border-box;
     }
 
     header .container-fluid {
-    flex-direction: column;
-    align-items: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     nav {
@@ -253,41 +251,38 @@ nav a:hover {
         margin: 5px;
     }
 
-    #actividades {
-        grid-template-columns: 1fr;
-    }
-
     .inscripciones {
-    width: 100%;
-    overflow-x: auto;
+        width: 100%;
+        overflow-x: auto;
     }
 
     .tabla-inscripciones {
-    width: 100%;
-    min-width: 600px;
+        width: 100%;
+        min-width: 600px;
     }
 
     .encabezado-texto {
-    padding: 25px 15px;
+        padding: 25px 15px;
     }
 
     .encabezado-texto h1 {
-    font-size: 2rem;
+        font-size: 2rem;
     }
 
     .encabezado-texto p {
-    font-size: 1rem;
+        font-size: 1rem;
     }
-
 }
 
-/*TITULO PAGINA 2 */
+
+/* TÍTULO PÁGINA 2 */
 
 main h1 {
     text-align: center;
     color: var(--navy);
     margin-bottom: 25px;
 }
+
 
 /* TEXTOS DEL FORMULARIO */
 
@@ -303,7 +298,8 @@ main h1 {
     color: var(--gris);
 }
 
-/*  FORMULARIO */
+
+/* FORMULARIO */
 
 .formulario {
     max-width: 800px;
@@ -338,7 +334,6 @@ main h1 {
     font-size: 16px;
 }
 
-
 .formulario input[type="text"],
 .formulario input[type="number"],
 .formulario input[type="date"],
@@ -350,6 +345,9 @@ main h1 {
     border: 1px solid var(--acero);
     border-radius: 4px;
 }
+
+
+/* BOTONES DEL FORMULARIO */
 
 .botones-formulario {
     text-align: center;
@@ -383,7 +381,8 @@ main h1 {
     background-color: var(--cian);
 }
 
-/* TABLA DE INSCRIPCIONES  */
+
+/* TABLA DE INSCRIPCIONES */
 
 .inscripciones {
     max-width: 1100px;
@@ -428,3 +427,47 @@ main h1 {
     background-color: var(--verde);
 }
 
+/* Participantes generados dinámicamente */
+
+#contenedorParticipantes {
+    margin-top: 25px;
+}
+
+.participante-dinamico {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid var(--cielo);
+    border-radius: 8px;
+    background-color: white;
+}
+
+.participante-dinamico legend {
+    color: var(--navy);
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+.participante-dinamico label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.participante-dinamico input,
+.participante-dinamico select {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    margin-bottom: 18px;
+    padding: 8px;
+    border: 1px solid var(--acero);
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.participante-dinamico input:focus,
+.participante-dinamico select:focus {
+    outline: none;
+    border-color: var(--azul);
+}

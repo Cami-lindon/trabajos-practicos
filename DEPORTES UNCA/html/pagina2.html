@@ -18,7 +18,7 @@
     <nav>
         <a href="pagina1.html">Inicio</a>
         <a href="pagina1.html">Registrarse</a>
-        <a href="#actividades">Actividades deportivas</a>
+        <a href="pagina1.html#actividades">Actividades deportivas</a>
         <a href="pagina2.html">Inscribirse a una actividad</a>
         <a href="inscripciones.html">Mis inscripciones</a>
         <a href="inscripciones.html">Cancelar inscripción</a>
@@ -32,9 +32,8 @@
 
             <h1>Inscripción a una actividad deportiva</h1>
 
-            <form class="formulario" action="pagina3.html" method="post">
+            <form id="formInscripcion" class="formulario" action="pagina3.html" method="post">
 
-                <!-- Información de la actividad -->
                 <fieldset>
                     <legend>Información de la actividad</legend>
 
@@ -76,89 +75,32 @@
 
                 </fieldset>
 
-
-                <!-- Datos del participante -->
+                <!-- Cantidad de participantes -->
                 <fieldset>
-                    <legend>Datos del participante</legend>
+                    <legend>Participantes</legend>
 
                     <div>
-                        <label for="nombre">Apellido y nombre:</label>
-                        <input type="text"
-                               id="nombre"
-                               name="nombre"
-                               maxlength="100"
-                               required>
-                    </div>
-
-                    <div>
-                        <label for="dni">DNI:</label>
+                        <label for="cantidadParticipantes">Cantidad de participantes:</label>
                         <input type="number"
-                               id="dni"
-                               name="dni"
-                               min="10000000"
-                               max="99999999"
+                               id="cantidadParticipantes"
+                               name="cantidadParticipantes"
+                               min="1"
+                               max="10"
                                required>
                     </div>
 
-                    <div>
-                        <label for="fecha">Fecha de nacimiento:</label>
-                        <input type="date"
-                               id="fecha"
-                               name="fecha">
-                    </div>
-
-                    <div>
-                        <label for="correo">Correo electrónico:</label>
-                        <input type="email"
-                               id="correo"
-                               name="correo">
-                    </div>
-
-                    <div>
-                        <label for="telefono">Teléfono:</label>
-                        <input type="tel"
-                               id="telefono"
-                               name="telefono">
-                    </div>
-
-                    <div>
-                        <p>Sexo:</p>
-
-                        <input type="radio"
-                               id="femenino"
-                               name="sexo"
-                               value="femenino">
-                        <label for="femenino">Femenino</label>
-
-                        <input type="radio"
-                               id="masculino"
-                               name="sexo"
-                               value="masculino">
-                        <label for="masculino">Masculino</label>
-
-                        <input type="radio"
-                               id="no-binario"
-                               name="sexo"
-                               value="no-binario">
-                        <label for="no-binario">No binario</label>
-                    </div>
+                    <button type="button" id="generarParticipantes">
+                        Generar participantes
+                    </button>
 
                 </fieldset>
 
+                <!-- Participantes generados dinámicamente -->
+                <div id="contenedorParticipantes"></div>
 
 
                 <fieldset>
                     <legend>Información deportiva</legend>
-
-                    <div>
-                        <label for="nivel">Nivel:</label>
-
-                        <select id="nivel" name="nivel">
-                            <option value="inicial">Inicial</option>
-                            <option value="intermedio">Intermedio</option>
-                            <option value="avanzado">Avanzado</option>
-                        </select>
-                    </div>
 
                     <div>
                         <p>¿Posee experiencia previa?</p>
@@ -187,7 +129,6 @@
                     </div>
 
                 </fieldset>
-
 
 
                 <fieldset>
@@ -221,6 +162,8 @@
         <p>Deportes Unca – 2026</p>
     </footer>
 
+<script src="../js/general/validaciones.js"></script>
+<script src="../js/participantes/participantes.js"></script>
 </body>
 
 </html>
