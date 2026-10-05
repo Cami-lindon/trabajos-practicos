@@ -1,1 +1,5 @@
 .idea/
+DEPORTES UNCA/django/.venv/
+DEPORTES UNCA/django/**/__pycache__/
+DEPORTES UNCA/django/**/*.pyc
+DEPORTES UNCA/django/**/db.sqlite3
