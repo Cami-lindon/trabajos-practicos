@@ -1,0 +1,249 @@
+ACTIVIDAD 6 - MODELOS, MIGRACIONES Y ORM
+Proyecto: Deportes UNCA
+Aplicación: reservas
+
+1. CREAR TRES ACTIVIDADES DEPORTIVAS
+
+Instrucciones ejecutadas:
+
+```
+futbol = ActividadDeportiva.objects.create(
+    nombre="Fútbol",
+    descripcion="Entrenamiento y práctica de fútbol",
+    lugar="Cancha techada",
+    cupo=20
+)
+
+basquet = ActividadDeportiva.objects.create(
+    nombre="Básquet",
+    descripcion="Práctica de básquet universitario",
+    lugar="Gimnasio universitario",
+    cupo=15
+)
+
+voley = ActividadDeportiva.objects.create(
+    nombre="Vóley",
+    descripcion="Entrenamiento de vóley",
+    lugar="Polideportivo",
+    cupo=18
+)
+
+list(ActividadDeportiva.objects.values())
+```
+
+Resultado:
+
+[
+    {'id': 1, 'nombre': 'Fútbol', 'descripcion': 'Entrenamiento y práctica de fútbol', 'lugar': 'Cancha techada', 'cupo': 20},
+    {'id': 2, 'nombre': 'Básquet', 'descripcion': 'Práctica de básquet universitario', 'lugar': 'Gimnasio universitario', 'cupo': 15},
+    {'id': 3, 'nombre': 'Vóley', 'descripcion': 'Entrenamiento de vóley', 'lugar': 'Polideportivo', 'cupo': 18}
+]
+
+
+2. CREAR DOS HORARIOS PARA UNA ACTIVIDAD
+
+Instrucciones ejecutadas:
+
+```
+horario1 = Horario.objects.create(
+    actividad=futbol,
+    dia="Lunes",
+    hora_inicio="18:00",
+    hora_fin="19:30"
+)
+
+horario2 = Horario.objects.create(
+    actividad=futbol,
+    dia="Miércoles",
+    hora_inicio="18:00",
+    hora_fin="19:30"
+)
+
+list(Horario.objects.values())
+```
+
+Resultado:
+
+```
+[
+    {'id': 1, 'actividad_id': 1, 'dia': 'Lunes', 'hora_inicio': datetime.time(18, 0), 'hora_fin': datetime.time(19, 30)},
+    {'id': 2, 'actividad_id': 1, 'dia': 'Miércoles', 'hora_inicio': datetime.time(18, 0), 'hora_fin': datetime.time(19, 30)}
+]
+```
+
+3. CREAR TRES INSCRIPCIONES
+
+Instrucciones ejecutadas:
+
+```
+inscripcion1 = Inscripcion.objects.create(
+    nombre="Ana",
+    apellido="Pérez",
+    dni="40123456",
+    estado="Activa",
+    horario=horario1
+)
+
+inscripcion2 = Inscripcion.objects.create(
+    nombre="Juan",
+    apellido="Gómez",
+    dni="38987654",
+    estado="Activa",
+    horario=horario1
+)
+
+inscripcion3 = Inscripcion.objects.create(
+    nombre="Lucía",
+    apellido="López",
+    dni="42111222",
+    estado="Activa",
+    horario=horario2
+)
+
+list(Inscripcion.objects.values())
+```
+
+Resultado:
+
+```python
+[
+    {'id': 1, 'nombre': 'Ana', 'apellido': 'Pérez', 'dni': '40123456', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 1},
+    {'id': 2, 'nombre': 'Juan', 'apellido': 'Gómez', 'dni': '38987654', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 1},
+    {'id': 3, 'nombre': 'Lucía', 'apellido': 'López', 'dni': '42111222', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 2}
+]
+```
+
+4. CONSULTAR TODAS LAS ACTIVIDADES
+
+Instrucción ejecutada:
+
+```python
+list(ActividadDeportiva.objects.values())
+```
+
+Resultado: se obtuvieron las tres actividades registradas: Fútbol, Básquet y Vóley.
+[
+    {'id': 1, 'nombre': 'Fútbol', 'descripcion': 'Entrenamiento y práctica de fútbol', 'lugar': 'Cancha techada', 'cupo': 20},
+    {'id': 2, 'nombre': 'Básquet', 'descripcion': 'Práctica de básquet universitario', 'lugar': 'Gimnasio universitario', 'cupo': 15},
+    {'id': 3, 'nombre': 'Vóley', 'descripcion': 'Entrenamiento de vóley', 'lugar': 'Polideportivo', 'cupo': 18}
+]
+
+5. CONSULTAR LOS HORARIOS DE UNA ACTIVIDAD
+
+Instrucciones ejecutadas:
+
+
+list(Horario.objects.filter(actividad=futbol).values())
+
+Resultado:
+[
+    {'id': 1, 'actividad_id': 1, 'dia': 'Lunes', 'hora_inicio': datetime.time(18, 0), 'hora_fin': datetime.time(19, 30)},
+    {'id': 2, 'actividad_id': 1, 'dia': 'Miércoles', 'hora_inicio': datetime.time(18, 0), 'hora_fin': datetime.time(19, 30)}
+]
+
+
+list(futbol.horarios.values())
+
+Resultado:
+[
+    {'id': 1, 'actividad_id': 1, 'dia': 'Lunes', 'hora_inicio': datetime.time(18, 0), 'hora_fin': datetime.time(19, 30)},
+    {'id': 2, 'actividad_id': 1, 'dia': 'Miércoles', 'hora_inicio': datetime.time(18, 0), 'hora_fin': datetime.time(19, 30)}
+]
+
+Resultados: se obtuvieron los horarios de Fútbol, correspondientes a los días lunes y miércoles, de 18:00 a 19:30.
+
+6. CONSULTAR LAS INSCRIPCIONES ACTIVAS
+
+Instrucción ejecutada:
+
+```
+list(Inscripcion.objects.filter(estado="Activa").values())
+
+```
+Resultado: se obtuvieron tres inscripciones activas: Ana (ID 1), Juan (ID 2) y Lucía (ID 3).
+
+[
+    {'id': 1, 'nombre': 'Ana', 'apellido': 'Pérez', 'dni': '40123456', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 1},
+    {'id': 2, 'nombre': 'Juan', 'apellido': 'Gómez', 'dni': '38987654', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 1},
+    {'id': 3, 'nombre': 'Lucía', 'apellido': 'López', 'dni': '42111222', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 2}
+]
+
+
+7. CONSULTAR LAS INSCRIPCIONES DE UN HORARIO
+
+Instrucción ejecutada:
+
+```
+list(Inscripcion.objects.filter(horario=horario1).values())
+```
+Resultado: se obtuvieron las inscripciones de Ana y Juan, asociadas al horario del lunes (ID 1).
+[
+    {'id': 1, 'nombre': 'Ana', 'apellido': 'Pérez', 'dni': '40123456', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 1},
+    {'id': 2, 'nombre': 'Juan', 'apellido': 'Gómez', 'dni': '38987654', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 1}
+]
+
+8. MODIFICAR EL CUPO DE UNA ACTIVIDAD
+
+Instrucciones ejecutadas:
+
+```
+futbol.cupo = 25
+futbol.save()
+
+ActividadDeportiva.objects.filter(
+    id=futbol.id
+).values("nombre", "cupo").get()
+```
+
+Resultado:
+
+```
+{'nombre': 'Fútbol', 'cupo': 25}
+```
+El cupo de Fútbol se modificó de 20 a 25 y el cambio quedó guardado en la base de datos.
+
+9. CAMBIAR EL ESTADO DE UNA INSCRIPCIÓN
+
+Instrucciones ejecutadas:
+
+```
+inscripcion3.estado = "Cancelada"
+inscripcion3.save()
+
+Inscripcion.objects.filter(
+    id=inscripcion3.id
+).values().get()
+```
+
+Resultado: El estado de la inscripción de Lucía cambió de Activa a Cancelada.
+
+```
+{'id': 3, 'nombre': 'Lucía', 'apellido': 'López', 'dni': '42111222', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Cancelada', 'horario_id': 2}
+```
+
+
+10. ELIMINAR UNA INSCRIPCIÓN
+
+Instrucciones ejecutadas:
+
+```
+inscripcion2.delete()
+list(Inscripcion.objects.values())
+```
+
+Resultado de la eliminación:
+
+```
+(1, {'reservas.Inscripcion': 1})
+```
+
+Resultado de la consulta posterior:
+
+```
+[
+    {'id': 1, 'nombre': 'Ana', 'apellido': 'Pérez', 'dni': '40123456', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Activa', 'horario_id': 1},
+    {'id': 3, 'nombre': 'Lucía', 'apellido': 'López', 'dni': '42111222', 'fecha_inscripcion': datetime.date(2026, 10, 14), 'estado': 'Cancelada', 'horario_id': 2}
+]
+```
+
+La inscripción de Juan fue eliminada correctamente. Ana continúa activa y Lucía permanece cancelada.
