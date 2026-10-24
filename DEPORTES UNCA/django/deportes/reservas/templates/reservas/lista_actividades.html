@@ -1,0 +1,104 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades deportivas | Deportes UNCA</title>
+    <link rel="stylesheet" href="{% static 'reservas/estilos.css' %}">
+</head>
+<body>
+
+    {% if messages %}
+        <div class="notificaciones">
+            {% for message in messages %}
+                <div class="notificacion {{ message.tags }}">
+                    <span class="icono-notificacion">
+                        {% if message.tags == "success" %}✓{% else %}!{% endif %}
+                    </span>
+
+                    <span>{{ message }}</span>
+
+                    <button type="button"
+                            class="cerrar-notificacion"
+                            aria-label="Cerrar notificación"
+                            onclick="this.parentElement.remove()">
+                        ×
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <header class="encabezado">
+        <p class="marca">DEPORTES UNCA</p>
+        <h1>Actividades deportivas</h1>
+        <p>Conocé las propuestas deportivas disponibles.</p>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="seccion-actividades">
+            <div class="encabezado-seccion">
+                <h2>Actividades disponibles</h2>
+                <a class="boton boton-principal"
+                   href="{% url 'agregar_actividad' %}">
+                    Registrar actividad
+                </a>
+            </div>
+
+            {% if actividades %}
+                <div class="lista-tarjetas">
+                    {% for actividad in actividades %}
+                        <article class="tarjeta-actividad">
+                            <h3>{{ actividad.nombre }}</h3>
+
+                            <p>
+                                <strong>Descripción:</strong>
+                                {{ actividad.descripcion }}
+                            </p>
+
+                            <p>
+                                <strong>Lugar:</strong>
+                                {{ actividad.lugar }}
+                            </p>
+
+                            <p>
+                                <strong>Cupo:</strong>
+                                {{ actividad.cupo }} personas
+                            </p>
+
+                            <a class="enlace-detalle"
+                               href="{% url 'detalle_actividad' actividad.id %}">
+                                Ver detalles →
+                            </a>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="mensaje-vacio">
+                    <h3>Todavía no hay actividades</h3>
+                    <p>Registrá una nueva actividad para que aparezca en este listado.</p>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>Deportes UNCA · Universidad Nacional de Catamarca</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll(".notificacion").forEach(function (notificacion) {
+            setTimeout(function () {
+                notificacion.classList.add("salir");
+
+                setTimeout(function () {
+                    notificacion.remove();
+                }, 400);
+            }, 3500);
+        });
+    </script>
+
+</body>
+</html>

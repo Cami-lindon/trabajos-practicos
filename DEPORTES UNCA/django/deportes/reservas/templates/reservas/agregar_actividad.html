@@ -1,0 +1,119 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar actividad | Deportes UNCA</title>
+    <link rel="stylesheet" href="{% static 'reservas/estilos.css' %}">
+</head>
+<body>
+
+    {% if messages %}
+        <div class="notificaciones">
+            {% for message in messages %}
+                <div class="notificacion {{ message.tags }}">
+                    <span class="icono-notificacion">
+                        {% if message.tags == "success" %}✓{% else %}!{% endif %}
+                    </span>
+
+                    <span>{{ message }}</span>
+
+                    <button type="button"
+                            class="cerrar-notificacion"
+                            aria-label="Cerrar notificación"
+                            onclick="this.parentElement.remove()">
+                        ×
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <header class="encabezado">
+        <p class="marca">DEPORTES UNCA</p>
+        <h1>Registrar actividad deportiva</h1>
+        <p>Completá los datos para incorporar una nueva propuesta deportiva.</p>
+    </header>
+
+    <main class="contenedor-principal">
+        <section class="panel-formulario">
+            <h2>Datos de la actividad</h2>
+
+            <form method="POST" class="formulario-actividad">
+                {% csrf_token %}
+
+                <div class="campo-formulario">
+                    <label for="nombre">Nombre de la actividad</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="descripcion">Descripción</label>
+                    <textarea
+                        id="descripcion"
+                        name="descripcion"
+                        rows="4"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="lugar">Lugar</label>
+                    <input
+                        type="text"
+                        id="lugar"
+                        name="lugar"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="cupo">Cupo de participantes</label>
+                    <input
+                        type="number"
+                        id="cupo"
+                        name="cupo"
+                        min="1"
+                        step="1"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="boton boton-principal">
+                    Registrar actividad
+                </button>
+            </form>
+
+            <a class="enlace-volver" href="{% url 'lista_actividades' %}">
+                ← Volver al listado de actividades
+            </a>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>Deportes UNCA · Universidad Nacional de Catamarca</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll(".notificacion").forEach(function (notificacion) {
+            setTimeout(function () {
+                notificacion.classList.add("salir");
+
+                setTimeout(function () {
+                    notificacion.remove();
+                }, 400);
+            }, 3500);
+        });
+    </script>
+
+</body>
+</html>
