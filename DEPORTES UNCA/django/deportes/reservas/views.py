@@ -1,8 +1,17 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import ActividadDeportiva
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.http import require_POST
 
+
+@login_required(login_url="/usuarios/login/")
+@permission_required(
+    "reservas.add_actividaddeportiva",
+    raise_exception=True
+)
 
 def agregar_actividad(request):
     if request.method == "POST":
@@ -57,3 +66,27 @@ def detalle_actividad(request, actividad_id):
         {"actividad": actividad}
     )
 
+def iniciar_sesion(request):
+    if request.method == "POST":
+        usuario = request.POST.get("username", "").strip()
+        contrasena = request.POST.get("password", "")
+
+        user = authenticate(
+            request,
+            username=usuario,
+            password=contrasena
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect("lista_actividades")
+
+        messages.error(request, "Usuario o contraseña incorrectos.")
+
+    return render(request, "reservas/login.html")
+
+
+@require_POST
+def cerrar_sesion(request):
+    logout(request)
+    return redirect("lista_actividades")
